@@ -3,6 +3,8 @@ from random import randint
 from time import sleep
 mixer.init()
 font.init()
+direction = "left"
+direction_1 = "up"
 window = display.set_mode ((700, 500))
 display.set_caption ("_Pin-Pong_")
 background = transform.scale(image.load("Fon.jpg"), (700,500))
@@ -56,15 +58,25 @@ class Player_1(GameSprite):
 class Boll(GameSprite):
     def __init__(self, player_image, player_x, player_y, player_speed,):
         super().__init__(player_image, player_x, player_y, player_speed)
-    def update(self):
-        if self.rect.y < 400:
-            self.rect.y += self.speed
-        if self.rect.x < 400:
-            self.rect.x += self.speed
-        if self.rect.y > 600:
-            self.rect.y -= self.speed
-        if self.rect.x > 600:
+    def Update(self):
+        global direction
+        if self.rect.x <= 150 :
+            direction = "right"
+        if self.rect.x >= 470:
+            direction = "left"
+        if direction == "left":
             self.rect.x -= self.speed
+        else:
+            self.rect.x += self.speed
+
+        if self.rect.y <= 150 :
+            direction_1 = "down"
+        if self.rect.y >= 470:
+            direction_1 = "up"
+        if direction_1 == "up":
+            self.rect.y -= self.speed
+        else:
+            self.rect.y += self.speed
 a_1 = Player_1('P_1.png', 30, 430, speed)
 a_2 = Player_2('P_1.png', 600, 430, speed)
 boll = Boll("Boll.png", randint(35,620), randint(35,620),1)
