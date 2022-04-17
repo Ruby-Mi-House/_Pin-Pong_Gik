@@ -79,8 +79,8 @@ class Boll(GameSprite):
             self.rect.y -= self.speed
         if direction_1 == "down":
             self.rect.y += self.speed
-a_1 = Player_1('P_1.png', 30, 430, speed)
-a_2 = Player_2('P_2.png', 880, 430, speed)
+a_1 = Player_1('P_1.png', 30, 300, speed)
+a_2 = Player_2('P_2.png', 880, 300, speed)
 boll = Boll("Boll.png", randint(300,500), randint(100,560),speed)
 while game:
     win = font.render("Игра окончена!", True,(255,215,0))
